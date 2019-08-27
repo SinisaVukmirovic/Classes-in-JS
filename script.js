@@ -103,3 +103,60 @@ console.log(SquareRectangle.isValidDimensions(5, 5));
 
 console.log('======================================');
 
+// 4. Extends keyword and inheritance
+
+// Parent class
+class Person {
+    constructor( name, age ) {
+        this.name = name;
+        this.age = age;
+    }
+    
+    describe() {
+        console.log(`I am ${this.name} and I am ${this.age} years old`);
+    }
+}
+
+// Child class
+class Programmer extends Person {
+    constructor( name, age, language ) {
+        // super() calls the constructor of the parent class
+        super( name, age );
+        
+        // custom behaviour
+        this.language = language;
+    }
+    
+    code() {
+        console.log(`${this.name} is a coder in ${this.language}`);
+    }
+}
+
+let person1 = new Person('Jeff', 44);
+let programmer1 = new Programmer('Dom', 36, 'JavaScript');
+
+console.log(person1);
+console.log(programmer1);
+
+programmer1.describe();
+programmer1.code();
+// code() method will only work on instance of programmer not instance of person
+
+const programmers = [
+    new Programmer( 'Sinisa', 33, 'JavaScript'),
+    new Programmer( 'Sin', 27, 'CSS 3'),
+    new Programmer( 'Sin', 27, 'Svelte.js'),
+    new Programmer( 'Vukmirovic', 19, 'HTML'),
+    new Programmer( 'Sin', 27, 'Git')
+];
+
+function developSoftware(programmers) {
+    // develop software
+    for (let programmer of programmers) {
+        programmer.code();
+    }
+}
+
+developSoftware(programmers);
+
+console.log('======================================');
