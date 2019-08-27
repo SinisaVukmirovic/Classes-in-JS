@@ -143,9 +143,9 @@ programmer1.code();
 // code() method will only work on instance of programmer not instance of person
 
 const programmers = [
-    new Programmer( 'Sinisa', 33, 'JavaScript'),
-    new Programmer( 'Sin', 27, 'CSS 3'),
-    new Programmer( 'Sin', 27, 'Svelte.js'),
+    new Programmer( 'DOM', 33, 'JavaScript'),
+    new Programmer( 'Brad', 27, 'CSS 3'),
+    new Programmer( 'Sinisa', 27, 'Svelte.js'),
     new Programmer( 'Vukmirovic', 19, 'HTML'),
     new Programmer( 'Sin', 27, 'Git')
 ];
@@ -153,6 +153,7 @@ const programmers = [
 function developSoftware(programmers) {
     // develop software
     for (let programmer of programmers) {
+        programmer.describe();
         programmer.code();
     }
 }
@@ -160,3 +161,35 @@ function developSoftware(programmers) {
 developSoftware(programmers);
 
 console.log('======================================');
+
+// 5. Polymorphism
+// ================
+
+class Animal {
+    constructor(breed) {
+        this.breed = breed;
+    }
+
+    makeSound() {
+        console.log(`This ${this.breed} makes a generic animal sound!'`);
+    }
+}
+
+class Dog extends Animal {
+    constructor( breed, name ) {
+        super( breed );
+        
+        this.name = name;
+    }
+
+    // polymorphism - redefyning methods of constructor parent class
+    makeSound() {
+        console.log(`${this.name} barks Wuff Wuff!`);
+    }
+}
+
+const animal1 = new Animal('Dog');
+const animal2 = new Dog('Dog', 'Rex');
+
+animal1.makeSound();
+animal2.makeSound();
