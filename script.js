@@ -38,12 +38,12 @@ class Square {
 
         this.width = width;
         this.height = width;
-        this.numberOfSequestsForArea = 0;
+        this.numberOfRequestsForArea = 0;
     }
 
     // getter
     get area() {
-        this.numberOfSequestsForArea++;
+        this.numberOfRequestsForArea++;
         return this.width * this.width;
     }
 
@@ -69,10 +69,37 @@ console.log(square1.height);
 console.log(square1.area);
 console.log(square1.area);
 console.log(square1.area);
-console.log(square1.numberOfSequestsForArea);
+console.log(square1.numberOfRequestsForArea);
 
 console.log('======================================');
 
 // 3. Static Methods
 // ==================
+
+class SquareRectangle {
+    constructor( width ) {
+        this.width = width;
+        this.height = width;
+    }
+
+    // static method
+    static equals( a, b ) {
+        return a.width * a.height === b.width * b.width;
+    }
+
+    static isValidDimensions( width, height ) {
+        return width === height;
+    }
+}
+
+let squareRect1 = new SquareRectangle(7);
+let squareRect2 = new SquareRectangle(8);
+
+// static methods are called directly on Class itself, and not on its instance
+// static metnods don't require an instance of the Clss
+console.log(SquareRectangle.equals(squareRect1, squareRect2));
+
+console.log(SquareRectangle.isValidDimensions(5, 5));
+
+console.log('======================================');
 
